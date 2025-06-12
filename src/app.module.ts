@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { SeedModule } from './seeds/seed.module';
 
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -17,6 +18,7 @@ import { SeedModule } from './seeds/seed.module';
     AuthModule,
     UsersModule,
     SeedModule,
+
 
   ],
   controllers: [AppController],
