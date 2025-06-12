@@ -7,6 +7,7 @@ import { DatabaseModule } from './database/database.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { SeedModule } from './seeds/seed.module';
+import { PaymentsModule } from './payments/payments.module';
 
 
 @Module({
@@ -18,6 +19,7 @@ import { SeedModule } from './seeds/seed.module';
     AuthModule,
     UsersModule,
     SeedModule,
+    PaymentsModule,
 
 
   ],
