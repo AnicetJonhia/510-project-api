@@ -9,6 +9,7 @@ import { UsersModule } from './users/users.module';
 import { SeedModule } from './seeds/seed.module';
 import { ProductsModule } from './products/products.module';
 import { PaymentsModule } from './payments/payments.module';
+import { OrdersModule } from './orders/orders.module';
 
 
 @Module({
@@ -22,6 +23,7 @@ import { PaymentsModule } from './payments/payments.module';
     SeedModule,
     ProductsModule,
     PaymentsModule,
+    OrdersModule,
 
   ],
   controllers: [AppController],
