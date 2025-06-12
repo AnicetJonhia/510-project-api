@@ -2,6 +2,7 @@ import { Injectable, OnModuleInit } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from '../users/entities/user.entity';
+import { ConfigService } from '@nestjs/config';
 
 
 @Injectable()
@@ -9,6 +10,7 @@ export class SeedService implements OnModuleInit {
   constructor(
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
+    private readonly configService: ConfigService,
   ) {}
 
   async onModuleInit() {
@@ -17,14 +19,18 @@ export class SeedService implements OnModuleInit {
 }
 
 //   async clearAdminSeed() {
-//   await this.userRepository.delete({ email: 'aadmin@admin.admin' });
+//   await this.userRepository.delete({ email });
 //   console.log('🗑 Admin user deleted');
 // }
 
 
   async seedAdminOnly() {
+
+    const email = this.configService.get<string>('ADMIN_EMAIL');
+    const password = this.configService.get<string>('ADMIN_PASSWORD');
+
     const existingAdmin = await this.userRepository.findOne({
-      where: { email: 'admin@admin.admin' },
+      where: { email},
     });
 
     if (existingAdmin) {
@@ -33,8 +39,8 @@ export class SeedService implements OnModuleInit {
     }
 
     const adminUser = this.userRepository.create({
-      email: 'admin@admin.admin',
-      password: 'Admin123*',
+      email,
+      password,
       firstName: 'Admin',
       lastName: 'User',
       roles: ['admin', 'user'],
