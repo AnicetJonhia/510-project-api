@@ -19,7 +19,7 @@ export class SeedService implements OnModuleInit {
 }
 
 //   async clearAdminSeed() {
-//   await this.userRepository.delete({ email: 'admin@admin.admin' });
+//   await this.userRepository.delete({ email });
 //   console.log('🗑 Admin user deleted');
 // }
 
